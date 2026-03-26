@@ -1,8 +1,10 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-let cachedClient: SupabaseClient | null = null;
+type AppSupabaseClient = SupabaseClient<any, "cheetahbearfuel", any>;
 
-export function getSupabaseClient(): SupabaseClient {
+let cachedClient: AppSupabaseClient | null = null;
+
+export function getSupabaseClient(): AppSupabaseClient {
   if (cachedClient) return cachedClient;
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -16,9 +18,13 @@ export function getSupabaseClient(): SupabaseClient {
     throw new Error("NEXT_PUBLIC_SUPABASE_ANON_KEY is missing.");
   }
 
-  cachedClient = createClient(supabaseUrl, supabaseAnonKey, {
-    db: { schema: "cheetahbearfuel" },
-  });
+  cachedClient = createClient<any, "cheetahbearfuel", any>(
+    supabaseUrl,
+    supabaseAnonKey,
+    {
+      db: { schema: "cheetahbearfuel" },
+    }
+  );
 
   return cachedClient;
 }
