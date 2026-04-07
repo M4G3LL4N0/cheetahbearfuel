@@ -5,19 +5,19 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-[90vh] relative">
-        <div className="absolute inset-0">
+      <section className="flex flex-col items-center justify-center min-h-[100vh] relative overflow-hidden">
+        <div className="absolute inset-0 glow-effect">
           <Image
             src="/hero-cheetah-bear.png"
             alt="Cheetah Bear Fuel"
             fill
-            className="object-cover opacity-80"
+            className="object-cover opacity-50"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90" />
         </div>
         
-        <div className="relative z-10 text-center space-y-8 px-4">
+        <div className="relative z-10 text-center space-y-8 px-4 max-w-7xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             CHEETAH BEAR FUEL
           </h1>
@@ -32,7 +32,7 @@ export default function Home() {
           
           <Link 
             href="#waitlist"
-            className="inline-block px-8 py-4 text-xl font-bold uppercase bg-primary text-black rounded-full hover:bg-primary/90 transition-all"
+            className="inline-block px-8 py-4 text-xl font-bold uppercase bg-gradient-to-r from-primary to-secondary text-black rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20"
           >
             Join the Waitlist
           </Link>
@@ -40,11 +40,13 @@ export default function Home() {
       </section>
 
       {/* Product Teaser Section */}
-      <section className="py-20 px-4">
+      <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {['Energy', 'Protein', 'Electrolytes', 'Focus'].map((feature, i) => (
-            <div key={i} className="bg-black/20 p-8 rounded-xl border border-white/10 hover:border-primary/50 transition-all">
-              <h3 className="text-2xl font-bold uppercase mb-4 text-primary">{feature}</h3>
+            <div key={i} className="glass p-8 rounded-2xl hover:border-primary/50 transition-all">
+              <h3 className="text-2xl font-bold uppercase mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                {feature}
+              </h3>
               <p className="text-zinc-300">
                 {feature === 'Energy' && 'Unleash raw power with our energy blend'}
                 {feature === 'Protein' && 'Build strength with premium protein'}
@@ -57,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* Brand Vibe Section */}
-      <section className="py-20 px-4 bg-black/20">
+      <section className="py-32 px-4 glass">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold uppercase mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             American Performance Redefined
@@ -69,7 +71,7 @@ export default function Home() {
       </section>
 
       {/* Waitlist Section */}
-      <section id="waitlist" className="py-20 px-4">
+      <section id="waitlist" className="py-32 px-4">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-bold uppercase mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Be First. Be Fast.
@@ -82,12 +84,12 @@ export default function Home() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 py-3 bg-black/20 text-white rounded-full border border-white/10 focus:border-primary/50 focus:outline-none"
+              className="glass flex-1 px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
               required
             />
             <button
               type="submit"
-              className="px-8 py-3 bg-primary text-black font-bold uppercase rounded-full hover:bg-primary/90 transition-all"
+              className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-black font-bold uppercase rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20"
             >
               Join Now
             </button>

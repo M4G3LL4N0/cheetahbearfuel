@@ -2,9 +2,12 @@
 
 :root {
   --background: #0a0a0a;
-  --foreground: #ededed;
-  --primary: #ff007f;
-  --secondary: #00ffff;
+  --foreground: #ffffff;
+  --primary: #ff6b35;
+  --secondary: #ff3864;
+  --accent: #6d5dfc;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glow: radial-gradient(circle at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
 }
 
 @theme inline {
@@ -17,9 +20,29 @@
 }
 
 body {
-  background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
   color: var(--foreground);
   font-family: ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glow);
+  pointer-events: none;
+  z-index: -1;
 }
 
 h1, h2, h3 {
