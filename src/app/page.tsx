@@ -58,6 +58,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Flavors Section */}
+      <section className="py-32 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold uppercase mb-16 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            EXPLORE OUR FLAVORS
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Arctic Blast',
+                description: 'Cool mint with a hint of citrus',
+                color: '#6d5dfc',
+                nutrition: {
+                  calories: 15,
+                  caffeine: 200,
+                  protein: 10
+                }
+              },
+              {
+                name: 'Tropical Fury',
+                description: 'Exotic mango and passionfruit',
+                color: '#ff3864',
+                nutrition: {
+                  calories: 20,
+                  caffeine: 180,
+                  protein: 12
+                }
+              },
+              {
+                name: 'Midnight Berry',
+                description: 'Rich blackberry and acai',
+                color: '#ff6b35',
+                nutrition: {
+                  calories: 18,
+                  caffeine: 150,
+                  protein: 8
+                }
+              }
+            ].map((flavor, i) => (
+              <div 
+                key={i}
+                className="glass p-8 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10"
+              >
+                <div 
+                  className="w-16 h-16 rounded-full mb-6"
+                  style={{ backgroundColor: flavor.color }}
+                />
+                <h3 className="text-2xl font-bold uppercase mb-4">
+                  {flavor.name}
+                </h3>
+                <p className="text-zinc-300 mb-6">
+                  {flavor.description}
+                </p>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-zinc-300">
+                    <span>Calories</span>
+                    <span>{flavor.nutrition.calories}</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-300">
+                    <span>Caffeine (mg)</span>
+                    <span>{flavor.nutrition.caffeine}</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-300">
+                    <span>Protein (g)</span>
+                    <span>{flavor.nutrition.protein}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Brand Vibe Section */}
       <section className="py-32 px-4 glass">
         <div className="max-w-4xl mx-auto text-center">
