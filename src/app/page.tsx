@@ -167,20 +167,63 @@ export default function Home() {
             Join the waitlist today and be the first to experience the ultimate performance fuel.
           </p>
           
-          <form className="flex flex-col md:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="glass flex-1 px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
-              required
-            />
-            <button
-              type="submit"
-              className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-black font-bold uppercase rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"
-            >
-              Join Now
-            </button>
+          <form 
+            action="/api/waitlist" 
+            method="POST"
+            className="flex flex-col gap-6"
+          >
+            <div className="flex flex-col md:flex-row gap-4">
+              <input
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                className="glass flex-1 px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
+                required
+              />
+              <button
+                type="submit"
+                className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-black font-bold uppercase rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Join Now
+              </button>
+            </div>
+            <div className="min-h-6">
+              <p id="form-message" className="text-sm text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"></p>
+            </div>
           </form>
+          <script dangerouslySetInnerHTML={{
+            __html: `
+              document.querySelector('form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const button = form.querySelector('button');
+                const message = document.getElementById('form-message');
+                
+                button.disabled = true;
+                message.textContent = 'Processing...';
+                
+                try {
+                  const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: form.email.value })
+                  });
+                  const data = await response.json();
+                  
+                  if (data.ok) {
+                    message.textContent = 'You\'re in! Thanks for joining the waitlist.';
+                    form.reset();
+                  } else {
+                    message.textContent = data.error || 'Something went wrong. Please try again.';
+                  }
+                } catch (error) {
+                  message.textContent = 'Network error. Please try again.';
+                } finally {
+                  button.disabled = false;
+                }
+              });
+            `
+          }} />
         </div>
       </section>
 
