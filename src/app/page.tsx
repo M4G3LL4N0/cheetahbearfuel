@@ -200,7 +200,8 @@ export default function Home() {
                 const message = document.getElementById('form-message');
                 
                 button.disabled = true;
-                message.textContent = 'Processing...';
+                button.innerHTML = 'Joining <span class="loading-spinner"></span>';
+                message.textContent = '';
                 
                 try {
                   const response = await fetch(form.action, {
@@ -220,6 +221,7 @@ export default function Home() {
                   message.textContent = 'Network error. Please try again.';
                 } finally {
                   button.disabled = false;
+                  button.innerHTML = 'Join Now';
                 }
               });
             `
