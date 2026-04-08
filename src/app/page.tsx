@@ -43,7 +43,7 @@ export default function Home() {
       <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {['Energy', 'Protein', 'Electrolytes', 'Focus'].map((feature, i) => (
-            <div key={i} className="glass p-8 rounded-2xl hover:border-primary/50 transition-all">
+            <div key={i} className="glass p-8 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10">
               <h3 className="text-2xl font-bold uppercase mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 {feature}
               </h3>
