@@ -18,8 +18,8 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 text-center space-y-8 px-4 max-w-7xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            CHEETAH BEAR FUEL
+          <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-fade-in">
+            CHEETAH BEAR<br />FUEL<span className="text-secondary">.</span>
           </h1>
           
           <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white">
@@ -89,7 +89,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-black font-bold uppercase rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20"
+              className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-black font-bold uppercase rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"
             >
               Join Now
             </button>
