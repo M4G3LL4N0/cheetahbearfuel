@@ -34,7 +34,7 @@ export default function Home() {
             href="#waitlist"
             className="inline-block px-8 py-4 text-xl font-bold uppercase bg-gradient-to-r from-primary to-secondary text-black rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20"
           >
-            Join the Waitlist
+            Be First. Be Fast. Join Now
           </Link>
         </div>
       </section>
