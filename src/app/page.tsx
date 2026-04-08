@@ -109,8 +109,15 @@ export default function Home() {
             ].map((flavor, i) => (
               <div 
                 key={i}
-                className="glass p-8 rounded-2xl border-transparent hover:border-primary/50 transition-all hover:scale-[1.02] group relative overflow-hidden"
+                className="glass p-8 rounded-2xl border-transparent hover:border-primary/50 transition-all hover:scale-[1.02] group relative overflow-hidden flavor-item"
               >
+                <div 
+                  className="flavor-can"
+                  style={{ 
+                    backgroundColor: flavor.color,
+                    border: `4px solid ${flavor.color}`,
+                  }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 from-primary/10 to-secondary/10 transition-opacity duration-300" />
                 <div 
                   className="w-16 h-16 rounded-full mb-6 transition-transform duration-500 group-hover:scale-110"
