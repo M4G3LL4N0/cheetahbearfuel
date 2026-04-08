@@ -109,7 +109,12 @@ export default function Home() {
             ].map((flavor, i) => (
               <div 
                 key={i}
-                className="glass p-8 rounded-2xl border-transparent hover:border-primary/50 transition-all hover:scale-[1.02] group relative overflow-hidden flavor-item"
+                className="glass p-8 rounded-2xl border-transparent hover:border-primary/50 transition-all hover:scale-[1.02] group relative overflow-hidden flavor-item cursor-pointer"
+                onClick={() => {
+                  const modal = document.getElementById(`nutrition-modal-${i}`);
+                  modal?.classList.remove('hidden');
+                  modal?.classList.add('flex');
+                }}
               >
                 <div 
                   className="flavor-can"
@@ -149,6 +154,88 @@ export default function Home() {
               </div>
             ))}
           </div>
+          
+          {/* Nutrition Modals */}
+          {[
+            {
+              name: 'Arctic Blast',
+              nutrition: {
+                calories: 15,
+                caffeine: 200,
+                protein: 10,
+                sugar: 0,
+                sodium: 50,
+                potassium: 100,
+                vitaminB12: 100,
+                vitaminB6: 100,
+                magnesium: 50
+              }
+            },
+            {
+              name: 'Tropical Fury',
+              nutrition: {
+                calories: 20,
+                caffeine: 180,
+                protein: 12,
+                sugar: 2,
+                sodium: 60,
+                potassium: 120,
+                vitaminB12: 120,
+                vitaminB6: 120,
+                magnesium: 60
+              }
+            },
+            {
+              name: 'Midnight Berry',
+              nutrition: {
+                calories: 18,
+                caffeine: 150,
+                protein: 8,
+                sugar: 1,
+                sodium: 55,
+                potassium: 110,
+                vitaminB12: 110,
+                vitaminB6: 110,
+                magnesium: 55
+              }
+            }
+          ].map((flavor, i) => (
+            <div
+              key={i}
+              id={`nutrition-modal-${i}`}
+              className="hidden fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  e.currentTarget.classList.add('hidden');
+                  e.currentTarget.classList.remove('flex');
+                }
+              }}
+            >
+              <div className="glass p-8 rounded-2xl max-w-md w-full relative">
+                <button
+                  onClick={() => {
+                    const modal = document.getElementById(`nutrition-modal-${i}`);
+                    modal?.classList.add('hidden');
+                    modal?.classList.remove('flex');
+                  }}
+                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 transition-colors"
+                >
+                  ✕
+                </button>
+                <h3 className="text-2xl font-bold uppercase mb-6">
+                  {flavor.name} Nutrition Facts
+                </h3>
+                <div className="space-y-3">
+                  {Object.entries(flavor.nutrition).map(([key, value]) => (
+                    <div key={key} className="flex justify-between">
+                      <span className="capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                      <span>{value}{key === 'calories' ? '' : key === 'caffeine' ? 'mg' : 'mg'}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -179,13 +266,32 @@ export default function Home() {
             method="POST"
             className="flex flex-col gap-6"
           >
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  name="firstName"
+                  type="text"
+                  placeholder="First name"
+                  className="glass px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
+                  required
+                  minLength={2}
+                />
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Last name"
+                  className="glass px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
+                  required
+                  minLength={2}
+                />
+              </div>
               <input
                 name="email"
                 type="email"
                 placeholder="Enter your email"
-                className="glass flex-1 px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
+                className="glass px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
                 required
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               />
               <button
                 type="submit"
@@ -214,7 +320,11 @@ export default function Home() {
                   const response = await fetch(form.action, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: form.email.value })
+                    body: JSON.stringify({ 
+                      firstName: form.firstName.value,
+                      lastName: form.lastName.value,
+                      email: form.email.value
+                    })
                   });
                   const data = await response.json();
                   
