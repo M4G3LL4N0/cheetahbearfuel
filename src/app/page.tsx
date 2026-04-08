@@ -22,9 +22,19 @@ export default function Home() {
             CHEETAH BEAR<br />FUEL<span className="text-secondary">.</span>
           </h1>
           
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white">
-            TWO BEAST ONE CAN
-          </h2>
+          <div className="h-24 md:h-32 overflow-hidden">
+            <div className="animate-text-rotate">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white">
+                SPEED × STRENGTH
+              </h2>
+              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white">
+                FOCUS × ENERGY
+              </h2>
+              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white">
+                TWO BEAST ONE CAN
+              </h2>
+            </div>
+          </div>
           
           <p className="text-xl text-zinc-300 max-w-2xl mx-auto">
             Why be one beast when you can be two? The ultimate fusion of speed and strength in every can.
@@ -99,11 +109,15 @@ export default function Home() {
             ].map((flavor, i) => (
               <div 
                 key={i}
-                className="glass p-8 rounded-2xl hover:border-primary/50 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10"
+                className="glass p-8 rounded-2xl border-transparent hover:border-primary/50 transition-all hover:scale-[1.02] group relative overflow-hidden"
               >
+                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 from-primary/10 to-secondary/10 transition-opacity duration-300" />
                 <div 
-                  className="w-16 h-16 rounded-full mb-6"
-                  style={{ backgroundColor: flavor.color }}
+                  className="w-16 h-16 rounded-full mb-6 transition-transform duration-500 group-hover:scale-110"
+                  style={{ 
+                    backgroundColor: flavor.color,
+                    boxShadow: `0 0 20px ${flavor.color}`
+                  }}
                 />
                 <h3 className="text-2xl font-bold uppercase mb-4">
                   {flavor.name}

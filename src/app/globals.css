@@ -32,8 +32,21 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.glow-effect {
-  position: relative;
+@keyframes textRotate {
+  0%, 30% { transform: translateY(0); }
+  33%, 63% { transform: translateY(-100%); }
+  66%, 96% { transform: translateY(-200%); }
+  100% { transform: translateY(-300%); }
+}
+
+.animate-text-rotate {
+  animation: textRotate 9s infinite ease-in-out;
+}
+
+.animate-text-rotate h2 {
+  line-height: 1;
+  padding: 0.25em 0;
+  margin: 0;
 }
 
 .glow-effect::before {
