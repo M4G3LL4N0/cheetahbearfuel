@@ -2,19 +2,19 @@
 > cheetahbearfuel@0.1.0 build
 > next build
 
-⨯ Another next build process is already running.
+▲ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
 
-  This could be:
-  - A next build still in progress
-✓ Compiled successfully in 9.1s
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.6s
   Running TypeScript ...
-  Finished TypeScript in 6.4s ...
+  Finished TypeScript in 3.2s ...
   Collecting page data using 6 workers ...
   Generating static pages using 6 workers (0/4) ...
   Generating static pages using 6 workers (1/4) 
   Generating static pages using 6 workers (2/4) 
   Generating static pages using 6 workers (3/4) 
-✓ Generating static pages using 6 workers (4/4) in 1193ms
+✓ Generating static pages using 6 workers (4/4) in 2.0s
   Finalizing page optimization ...
 
 Route (app)
