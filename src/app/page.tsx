@@ -6,8 +6,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0b0f14] text-white">
       <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-24">
-        <div className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/70">
-          CheetahBearFuel
+        <div className="inline-flex w-fit items-center rounded-full border border-white/10 bg-gradient-to-r from-white/5 to-white/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+          PREMIUM PERFORMANCE FORMULA
         </div>
 
         <h1 className="mt-8 max-w-4xl text-5xl font-semibold tracking-[-0.04em] text-white sm:text-7xl">
