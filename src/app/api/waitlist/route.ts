@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
