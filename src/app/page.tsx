@@ -4,6 +4,20 @@ import React from "react";
 import { Metadata } from "next";
 import Loading from "@/components/Loading";
 
+interface FeatureCard {
+  title: string;
+  text: string;
+}
+
+function FeatureCard({ title, text }: FeatureCard) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+      <h2 className="text-xl font-semibold tracking-[-0.02em]">{title}</h2>
+      <p className="mt-3 text-sm leading-6 text-white/70">{text}</p>
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#0b0f14] text-white">
