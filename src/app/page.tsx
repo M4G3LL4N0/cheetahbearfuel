@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { Metadata } from "next";
+import Loading from "@/components/Loading";
 
 export default function HomePage() {
   return (
