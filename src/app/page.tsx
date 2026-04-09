@@ -24,7 +24,10 @@ export default function HomePage() {
         <div className="mt-10 flex flex-wrap gap-4">
           <button
             type="button"
-            onClick={() => window.alert("Coming soon")}
+            onClick={() => {
+              // TODO: Implement actual early access flow
+              window.alert("Coming soon");
+            }}
             className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
           >
             Get Early Access
@@ -34,7 +37,9 @@ export default function HomePage() {
             type="button"
             onClick={() => {
               const el = document.getElementById("features");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+              }
             }}
             className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
@@ -42,10 +47,7 @@ export default function HomePage() {
           </button>
         </div>
 
-        <div
-          id="features"
-          className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <div id="features" className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               title: "Clean Performance",
@@ -60,15 +62,7 @@ export default function HomePage() {
               text: "Luxury performance aesthetics with a strong consumer identity.",
             },
           ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-            >
-              <h2 className="text-xl font-semibold tracking-[-0.02em]">
-                {item.title}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-white/70">{item.text}</p>
-            </div>
+            <FeatureCard key={item.title} {...item} />
           ))}
         </div>
       </section>
