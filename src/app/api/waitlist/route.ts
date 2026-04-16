@@ -1,6 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseClient } from "@/lib/supabase";
 
+type AppSupabaseClient = SupabaseClient<Database, "cheetahbearfuel", any>;
+
+interface Database {
+  public: {
+    Tables: {
+      waitlist_signups: {
+        Row: {
+          email: string
+          created_at: string
+          ip_address: string | null
+          user_agent: string | null
+        }
+      }
+    }
+  }
+}
+
 export const dynamic = "force-dynamic";
 
 const validateEmail = (email: string): boolean => {
