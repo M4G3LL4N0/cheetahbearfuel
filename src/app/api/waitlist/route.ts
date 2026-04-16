@@ -33,7 +33,13 @@ export async function POST(req: NextRequest) {
       .insert([{ 
         email,
         created_at: new Date().toISOString(),
-        ip_address: req.ip || req.headers.get("x-forwarded-for") || "unknown"
+        ip_address: (
+          req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+          req.headers.get('x-real-ip') ||
+          req.headers.get('x-client-ip') ||
+          null
+        ),
+        user_agent: req.headers.get('user-agent') || null,
       }]);
 
     if (error) {
