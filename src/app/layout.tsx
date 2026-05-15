@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
+import SiteNav from "@/components/SiteNav";
 import "./globals.css";
-import { Suspense } from "react";
-import Loading from "@/components/Loading";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cheetahbearfuel.com"),
   title: {
-    default: "CheetahBearFuel",
-    template: "%s | CheetahBearFuel"
+    default: "Cheetah Bear Fuel",
+    template: "%s | Cheetah Bear Fuel",
   },
-  description: "Premium performance fuel designed for elite builders - sustained energy, deep focus, and relentless momentum.",
+  description:
+    "Cheetah Bear Fuel is a high-octane American performance drink brand for energy, protein, electrolytes, mushroom focus, and sports health drinks.",
+  keywords: [
+    "energy drink",
+    "protein drink",
+    "electrolyte drink",
+    "performance drink",
+    "functional beverage",
+    "sports drink",
+    "Cheetah Bear Fuel",
+  ],
   openGraph: {
-    title: "CheetahBearFuel",
-    description: "The performance fuel system for builders sustaining peak output.",
+    title: "Cheetah Bear Fuel",
+    description: "Two beast one can. Why be one beast when you can be two?",
     url: "https://cheetahbearfuel.com",
-    siteName: "CheetahBearFuel",
+    siteName: "Cheetah Bear Fuel",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/hero-cheetah-bear.png",
+        width: 1536,
+        height: 1024,
       },
     ],
     locale: "en_US",
@@ -27,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CheetahBearFuel",
-    description: "Fuel engineered for execution.",
-    images: ["/og-image.jpg"],
+    title: "Cheetah Bear Fuel",
+    description: "Two beast one can. Why be one beast when you can be two?",
+    images: ["/hero-cheetah-bear.png"],
   },
 };
 
@@ -41,9 +50,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Suspense fallback={<Loading />}>
-          {children}
-        </Suspense>
+        <SiteNav />
+        {children}
       </body>
     </html>
   );
