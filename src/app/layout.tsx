@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: "/favicon.ico?v=2" },
+      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png?v=2" }],
+  },
+  manifest: "/site.webmanifest?v=2",
   metadataBase: new URL("https://cheetahbearfuel.com"),
   title: {
     default: "Cheetah Bear Fuel",
@@ -48,9 +55,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="premium-motion">
       <body>
-        <SiteNav />
         {children}
       </body>
     </html>
