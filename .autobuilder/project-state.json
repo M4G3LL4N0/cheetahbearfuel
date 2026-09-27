@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-05-06",
+  "project": {
+    "name": "Cheetah Bear Fuel",
+    "folder": "/Users/joshuadavis/startups/cheetahbearfuel",
+    "stage": "mvp",
+    "category": "performance beverage brand"
+  },
+  "venture_state": {
+    "stage": "mvp",
+    "live_status": "not_deployed_from_this_cycle",
+    "live_score": 78,
+    "fail_class": "manual_env_validation_required",
+    "cta_presence": true,
+    "deployability": "ready_after_pnpm_install",
+    "monetization_readiness": "waitlist_first_no_checkout"
+  },
+  "pass_status": {
+    "homepage": "pass",
+    "waitlist_route": "pass",
+    "brand_identity": "pass",
+    "autobuilder_public_exposure": "pass",
+    "package_manager": "pass"
+  },
+  "build_status": {
+    "pnpm_install": "passed_before_cleanup",
+    "pnpm_lint": "passed",
+    "pnpm_typecheck": "passed",
+    "pnpm_build": "passed_before_cleanup",
+    "route_table": ["/", "/_not-found", "/api/waitlist"]
+  },
+  "deploy_readiness": {
+    "vercel_ready": true,
+    "manual_deploy_only": true,
+    "required_commands": ["pnpm install", "pnpm build", "vercel --prod"],
+    "required_env_vars_for_waitlist": ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"],
+    "notes": "Build passes without Supabase env vars. Submitting the waitlist form returns a useful runtime error until env vars are configured."
+  },
+  "disk_status": {
+    "before_cleanup": "508M",
+    "after_cleanup": "7.5M",
+    "estimated_saved": "500.5M",
+    "large_files_over_25mb": [],
+    "removed_generated_artifacts": ["node_modules", ".next", "tsconfig.tsbuildinfo", "logs"]
+  },
+  "recent_changes": [
+    "Rebuilt homepage as a Cheetah Bear Fuel beverage/lifestyle landing page.",
+    "Preserved required hero copy and used public/hero-cheetah-bear.png.",
+    "Converted waitlist form to email capture with success and error states.",
+    "Lazy-imported Supabase inside POST and removed schema generic type risk.",
+    "Removed root app directory shadowing so Next detects src/app routes.",
+    "Updated gitignore to preserve docs and foundation files while ignoring generated artifacts."
+  ],
+  "open_issues": [
+    "Confirm Supabase env vars in Vercel and run a real waitlist submission.",
+    "Optimize hero image for production payload size.",
+    "Create a purpose-built 1200x630 Open Graph image.",
+    "Add product mockups or can renders for the major product lines."
+  ],
+  "next_actions": [
+    "Confirm Vercel env vars and waitlist submission.",
+    "Optimize hero image size without losing visual impact.",
+    "Add product mockup section for Energy, Protein, Electrolytes, Mushroom/Focus.",
+    "Add coming-soon flavor/drop section.",
+    "Add ecommerce-ready structure later without fake checkout."
+  ],
+  "last_agent_notes": "This cycle moved the venture from generic SaaS drift and route-shadowed build output into a working Cheetah Bear Fuel landing page with a valid App Router build. Do not redeploy automatically; founder should run pnpm install, pnpm build, then vercel --prod manually."
+}

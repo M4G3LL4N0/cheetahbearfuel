@@ -1,12 +1,6 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
-type AppSupabaseClient = SupabaseClient<any, "cheetahbearfuel", any>;
-
-let cachedClient: AppSupabaseClient | null = null;
-
-export function getSupabaseClient(): AppSupabaseClient {
-  if (cachedClient) return cachedClient;
-
+export function getSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -18,13 +12,7 @@ export function getSupabaseClient(): AppSupabaseClient {
     throw new Error("NEXT_PUBLIC_SUPABASE_ANON_KEY is missing.");
   }
 
-  cachedClient = createClient<any, "cheetahbearfuel", any>(
-    supabaseUrl,
-    supabaseAnonKey,
-    {
-      db: { schema: "cheetahbearfuel" },
-    }
-  );
-
-  return cachedClient;
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    db: { schema: "cheetahbearfuel" },
+  });
 }

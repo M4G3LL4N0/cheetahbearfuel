@@ -1,95 +1,91 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+
+type FormState = {
+  status: "idle" | "submitting" | "success" | "error";
+  message: string;
+};
 
 export default function WaitlistForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [message, setMessage] = useState('');
+  const [formState, setFormState] = useState<FormState>({
+    status: "idle",
+    message: "",
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setMessage('');
-    
-    const form = e.currentTarget;
-    const formData = {
-      firstName: form.firstName.value,
-      lastName: form.lastName.value,
-      email: form.email.value
-    };
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const email = String(formData.get("email") ?? "").trim().toLowerCase();
+
+    setFormState({ status: "submitting", message: "" });
 
     try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
       });
-      const data = await response.json();
-      
-      if (data.ok) {
-        setMessage("You're in! Thanks for joining the waitlist.");
-        form.reset();
-      } else {
-        setMessage(data.error || 'Something went wrong. Please try again.');
+      const data = (await response.json()) as { ok?: boolean; error?: string };
+
+      if (!response.ok || !data.ok) {
+        setFormState({
+          status: "error",
+          message:
+            data.error ??
+            "The waitlist is not taking signups right now. Try again soon.",
+        });
+        return;
       }
-    } catch (error) {
-      setMessage('Network error. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+
+      form.reset();
+      setFormState({
+        status: "success",
+        message: "You are in. First drop intel is coming your way.",
+      });
+    } catch {
+      setFormState({
+        status: "error",
+        message: "Network error. Try again in a minute.",
+      });
     }
   };
 
+  const isSubmitting = formState.status === "submitting";
+
   return (
-    <form 
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-6"
-    >
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            name="firstName"
-            type="text"
-            placeholder="First name"
-            className="glass px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
-            required
-            minLength={2}
-          />
-          <input
-            name="lastName"
-            type="text"
-            placeholder="Last name"
-            className="glass px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
-            required
-            minLength={2}
-          />
-        </div>
+    <form className="mx-auto max-w-xl" onSubmit={handleSubmit}>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <label className="sr-only" htmlFor="waitlist-email">
+          Email address
+        </label>
         <input
+          id="waitlist-email"
           name="email"
           type="email"
-          placeholder="Enter your email"
-          className="glass px-6 py-3 text-white rounded-full focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
           required
-          pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+          autoComplete="email"
+          placeholder="you@example.com"
+          className="min-h-12 flex-1 rounded-lg border border-white/14 bg-white/[0.07] px-4 text-base font-bold text-white outline-none transition placeholder:text-white/38 focus:border-[#00d7ff] focus:ring-2 focus:ring-[#00d7ff]/40"
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-black font-bold uppercase rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="min-h-12 rounded-lg bg-white px-5 text-sm font-black uppercase tracking-[0.16em] text-black transition hover:bg-[#ffb000] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isSubmitting ? (
-            <>
-              Joining <span className="loading-spinner" />
-            </>
-          ) : (
-            'Join Now'
-          )}
+          {isSubmitting ? "Joining" : "Join"}
         </button>
       </div>
-      <div className="min-h-6">
-        <p className="text-sm text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-fadeIn">
-          {message}
-        </p>
-      </div>
+      <p
+        aria-live="polite"
+        className={`mt-4 min-h-6 text-sm font-bold ${
+          formState.status === "error" ? "text-[#ff7a18]" : "text-[#00d7ff]"
+        }`}
+      >
+        {formState.message}
+      </p>
     </form>
   );
 }

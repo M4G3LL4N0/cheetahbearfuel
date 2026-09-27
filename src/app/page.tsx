@@ -1,4 +1,8 @@
 import Image from "next/image";
+import { MarketingGraphicsStack } from "@/components/MarketingGraphicsStack";
+import { ProcessFlowSection } from "@/components/ProcessFlowSection";
+import { HeroProductPanel } from "@/components/HeroProductPanel";
+import { TrustStrip } from "@/components/TrustStrip";
 import WaitlistForm from "@/components/WaitlistForm";
 
 const productLines = [
@@ -23,6 +27,10 @@ const productLines = [
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050507] text-white">
+        <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+          <TrustStrip />
+        </div>
+
       <section className="relative flex min-h-screen flex-col items-center justify-center px-5 py-14 text-center sm:px-8">
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(140deg,rgba(255,46,99,0.28),transparent_33%),linear-gradient(220deg,rgba(0,194,255,0.22),transparent_35%),linear-gradient(0deg,rgba(255,122,24,0.14),transparent_50%),#050507]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-64 bg-[linear-gradient(180deg,transparent,rgba(255,74,36,0.18)_35%,rgba(115,50,255,0.16)_70%,transparent)]" />
@@ -123,6 +131,9 @@ export default function HomePage() {
           <p>Why be one beast when you can be two?</p>
         </div>
       </footer>
+      <section className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6"><HeroProductPanel /></section>
+      <ProcessFlowSection />
+    <MarketingGraphicsStack />
     </main>
   );
 }

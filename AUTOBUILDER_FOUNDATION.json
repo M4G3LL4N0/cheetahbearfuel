@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "project_folder": "/Users/joshuadavis/startups/cheetahbearfuel",
+  "startup_name": "Cheetah Bear Fuel",
+  "aliases": ["CBF"],
+  "domain": "",
+  "category": "performance beverage brand",
+  "stage": "mvp",
+  "one_line_description": "A high-octane American performance drink brand for energy, protein, electrolytes, mushroom focus, and sports health drinks.",
+  "target_users": ["gym users", "athletes", "motorsports fans", "extreme sports fans", "builders", "nightlife users", "American performance culture consumers"],
+  "core_problem": "Most functional beverages feel generic, soft, corporate, or boring.",
+  "core_solution": "A bold lifestyle beverage brand combining speed, strength, hydration, and focus under the Cheetah Bear identity.",
+  "differentiation": "The brand combines mascot-driven identity, Miami Vice visuals, Pit Viper-style attitude, and multi-category performance drinks.",
+  "mvp_scope": {
+    "primary_goal": "Launch a premium landing page with waitlist capture.",
+    "included_features": ["homepage", "hero image", "product line teasers", "waitlist form", "SEO metadata"],
+    "excluded_for_now": ["full ecommerce checkout", "real inventory", "subscription portal", "user accounts"],
+    "future_features": ["Shopify commerce", "flavor drops", "subscription packs", "merch", "event sponsorships", "creator campaigns"]
+  },
+  "website": {
+    "primary_message": "Why be one beast when you can be two?",
+    "tone": "aggressive, premium, high-octane, American, humorous but powerful",
+    "routes": ["/", "/api/waitlist"],
+    "sections": ["hero", "product lines", "brand vibe", "waitlist", "footer"],
+    "cta": "Join the Waitlist",
+    "seo_keywords": ["energy drink", "protein drink", "electrolyte drink", "performance drink", "functional beverage", "sports drink"]
+  },
+  "product": {
+    "core_flows": ["visitor views brand", "visitor explores product lines", "visitor joins waitlist"],
+    "demo_flows": ["homepage conversion flow"],
+    "data_model_notes": ["waitlist_signups table if Supabase is configured"],
+    "auth_required": false,
+    "database_required": true,
+    "api_required": true
+  },
+  "design_system": {
+    "visual_style": "dark neon Miami Vice performance beverage brand with bold mascot hero art",
+    "colors": ["black", "red", "hot pink", "orange", "purple", "electric blue", "white"],
+    "typography": "bold uppercase condensed or wide tracking display typography",
+    "layout_principles": ["giant hero", "minimal copy", "strong contrast", "mobile responsive", "product cards with punch"],
+    "animation_style": "subtle glow, hover lift, background gradients",
+    "avoid": ["generic SaaS", "soft wellness", "corporate blandness", "overloaded sections"]
+  },
+  "technical_stack": {
+    "framework": "Next.js",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS",
+    "package_manager": "pnpm",
+    "deployment": "Vercel",
+    "database": "Supabase optional for waitlist",
+    "auth": "none",
+    "apis": ["waitlist API"]
+  },
+  "important_files": {
+    "routes": ["src/app/page.tsx", "src/app/api/waitlist/route.ts"],
+    "components": ["src/components/WaitlistForm.tsx"],
+    "lib": ["src/lib/supabase.ts"],
+    "data": [],
+    "public_assets": ["public/hero-cheetah-bear.png"],
+    "config": ["package.json", "pnpm-lock.yaml", "next.config.ts", "tsconfig.json", "postcss.config.mjs"]
+  },
+  "preserve": {
+    "copy": ["CHEETAH BEAR FUEL", "TWO BEAST ONE CAN", "Why be one beast when you can be two?"],
+    "features": ["waitlist capture", "product line cards"],
+    "components": ["homepage hero"],
+    "assets": ["public/hero-cheetah-bear.png"],
+    "technical_decisions": ["Next.js App Router", "Tailwind", "Vercel", "pnpm"]
+  },
+  "do_not": {
+    "delete": ["public/hero-cheetah-bear.png", "src/app/page.tsx", "src/app/api/waitlist/route.ts", "src/lib/supabase.ts", "AUTOBUILDER_FOUNDATION.json", "RECOVERY_NOTES.md", ".autobuilder"],
+    "expose_publicly": ["Autobuilder internals", "private founder info", "temporary build notes", "internal recovery language"],
+    "change_without_reason": ["brand name", "hero slogan", "visual direction", "product category"],
+    "build": ["generic SaaS dashboard", "fake ecommerce backend", "unneeded auth system"],
+    "drift_toward": ["wellness blog", "corporate B2B SaaS", "generic startup template", "unrelated Noaerth products"]
+  },
+  "autobuilder_strategy": {
+    "north_star": "Make Cheetah Bear Fuel feel like a viral performance beverage brand people want to join before the product exists.",
+    "quality_bar": "Premium, memorable, mobile-ready, Vercel-buildable, visually loud, and conversion-focused.",
+    "next_priorities": ["fix build", "polish hero", "confirm waitlist works", "compress/optimize hero image", "add product mockups", "add launch drop section"],
+    "safe_improvement_types": ["copy polish", "responsive design", "SEO", "performance optimization", "waitlist UX", "brand sections"],
+    "unsafe_improvement_types": ["deleting hero asset", "adding fake checkout", "changing brand identity", "using npm", "deploying automatically"],
+    "preferred_task_size": "medium",
+    "build_frequency_guidance": "Build after each meaningful source change.",
+    "deployment_guidance": "manual_vercel_only"
+  },
+  "cleanup_policy": {
+    "safe_to_delete": ["node_modules", ".next", ".turbo", ".vercel/cache", "dist", "build", "coverage", "playwright-report", "test-results", ".cache", ".parcel-cache", "*.log", ".DS_Store"],
+    "must_preserve": ["src", "public/hero-cheetah-bear.png", "package.json", "pnpm-lock.yaml", ".env.local", ".env.example", "RECOVERY_NOTES.md", "AUTOBUILDER_FOUNDATION.json", ".autobuilder"],
+    "large_file_review_paths": ["public", "assets", "media", "content", "data", "docs"],
+    "post_build_cleanup_commands": ["rm -rf node_modules .next .turbo .vercel/cache dist build coverage playwright-report test-results .cache .parcel-cache"]
+  },
+  "last_recovery_summary": {
+    "date": "2026-05-06",
+    "restored": ["Cheetah Bear Fuel beverage/lifestyle positioning", "required hero copy", "public hero image usage", "homepage conversion flow"],
+    "improved": ["premium dark neon landing page", "email-only waitlist UX", "SEO metadata", "gitignore deployment hygiene", "Autobuilder foundation memory"],
+    "fixed": ["Supabase lazy initialization", "Supabase schema generic type risk", "root app directory route shadowing", "generic SaaS copy drift"],
+    "removed": ["generated build artifacts", "node_modules", ".next", "duplicate root hero image", "placeholder checkout route", "root Supabase shim", "logs"],
+    "remaining_risks": ["Supabase env vars must be configured in Vercel for live waitlist submissions", "hero image can be optimized further", "Open Graph image should be custom-sized later"]
+  }
+}
