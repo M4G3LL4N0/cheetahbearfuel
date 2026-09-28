@@ -4,7 +4,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Cheetah Bear Fuel — two beasts, one can",
   description:
-    "Cheetah Bear Fuel is an American performance drink concept: energy, protein, electrolytes, and mushroom focus. First-drop waitlist — no cans are shipping yet.",
+    "Cheetah Bear Fuel is speed and strength in one American can. Email us about the first drop.",
 };
 
 const lines = [
@@ -45,7 +45,7 @@ export default function HomePage() {
           href="mailto:?subject=Cheetah%20Bear%20Fuel%20first-drop%20waitlist&body=Put%20me%20on%20the%20first-drop%20list%20for%20Cheetah%20Bear%20Fuel."
           className="rounded-lg bg-[linear-gradient(90deg,#ff2e63,#ff7a18,#00d7ff)] px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-black"
         >
-          Join the waitlist
+          Get updates
         </a>
       </header>
 
@@ -146,7 +146,7 @@ export default function HomePage() {
             href="mailto:?subject=Cheetah%20Bear%20Fuel%20first-drop%20waitlist&body=Put%20me%20on%20the%20first-drop%20list%20for%20Cheetah%20Bear%20Fuel."
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg border border-[#00d7ff] px-7 text-sm font-black uppercase tracking-[0.16em] text-[#00d7ff]"
           >
-            Draft the waitlist email
+            Talk to us
           </a>
         </section>
       </main>
