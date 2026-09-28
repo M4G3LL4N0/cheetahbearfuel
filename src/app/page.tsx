@@ -84,7 +84,7 @@ export default function HomePage() {
             href="mailto:?subject=Cheetah%20Bear%20Fuel%20first-drop%20waitlist&body=Put%20me%20on%20the%20first-drop%20list%20for%20Cheetah%20Bear%20Fuel."
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-[linear-gradient(90deg,#ff2e63,#ff7a18,#00d7ff)] px-7 text-sm font-black uppercase tracking-[0.18em] text-black"
           >
-            Join the first-drop waitlist
+            Email about the first drop
           </a>
         </section>
 
